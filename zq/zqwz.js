@@ -110,18 +110,28 @@ Object.keys(zqwzbodys).forEach((item) => {
 
         console.log(`共${zqwzbodyArr.length}个阅读body`)
         index1 = indexLast * 1
+        timer_wz=0;
+        timer_over=0;
+        is_wz=0;
         for (let k =  index1 ? index1 : 0; k < zqwzbodyArr.length; k++) {
             // $.message = ""
             zqwzbody1 = zqwzbodyArr[k];
             // console.log(`${zqwzbody1}`)
             console.log(`--------第 ${k + 1} 次阅读任务执行中--------\n`)
+            is_wz=1;
             await wzjl()
             zqwznum = k+2
             $.setdata(zqwznum, 'zqbody_index');
-            await $.wait(60000);
-            for (let k = 0; k < zq_timebodyArr.length; k++) {
-                zq_timebody1 = zq_timebodyArr[k];
-                await timejl()
+            let wait_time = 35 + Math.floor((Math.random() * 5) + 1);
+            await $.wait(wait_time * 1000);
+            if (is_wz == 0) {
+                timer_wz++;
+                if ( (timer_wz % 2 == 0) && (timer_over < 9900) ) {
+                    for (let k = 0; k < zq_timebodyArr.length; k++) {
+                        zq_timebody1 = zq_timebodyArr[k];
+                        await timejl()
+                    }
+                }
             }
             console.log("\n\n")
         }
@@ -173,24 +183,26 @@ function getzqwzbody() {
 function wzjl(timeout = 0) {
     return new Promise((resolve) => {
         let url = {
-            url : 'https://kandian.wkandian.com/v5/article/complete.json',
-            headers : wzheader,
-            body : zqwzbody1,}//xsgbody,}
+            url: 'https://kandian.wkandian.com/v5/article/complete.json',
+            headers: wzheader,
+            body: zqwzbody1,
+        }//xsgbody,}
         $.post(url, async (err, resp, data) => {
             try {
 
                 const result = JSON.parse(data)
-                if(result.items.read_score !== "undefined" ){
-                    console.log('\n浏览文章成功，获得：'+result.items.read_score + '金币')
-                    
-                }else{
+                if (result.items.read_score != "undefined") {
+                    console.log('\n浏览文章成功，获得：' + result.items.read_score + '金币')
+                    is_wz=result.items.ctype*1;
+                } else {
+                    is_wz=100;
                     console.log('\n看太久了，换一篇试试')
                 }
             } catch (e) {
             } finally {
                 resolve()
             }
-            },timeout)
+        }, timeout)
     })
 }
 
@@ -229,6 +241,7 @@ function timejl(timeout = 0) {
                 const result = JSON.parse(data)
                 if(result.success === true ){
                     console.log('\n阅读时长：'+result.time + '秒')
+                    timer_over = result.time*1;
                 }else{
                     console.log('\n更新阅读时长失败')
                 }
