@@ -126,7 +126,7 @@ Object.keys(zqwzbodys).forEach((item) => {
             await $.wait(wait_time * 1000);
             if (is_wz == 0) {
                 timer_wz++;
-                if ( (timer_wz % 3 == 0) && (timer_over < 9900) ) {
+                if ( (timer_wz % 3 == 0) && (timer_over < 7200) ) {
                     for (let k = 0; k < zq_timebodyArr.length; k++) {
                         zq_timebody1 = zq_timebodyArr[k];
                         await timejl()
