@@ -191,7 +191,7 @@ function wzjl(timeout = 0) {
             try {
 
                 const result = JSON.parse(data)
-                if (result.items.read_score != "undefined") {
+                if (result.items.read_score !== undefined) {
                     console.log('\n浏览文章成功，获得：' + result.items.read_score + '金币')
                     is_wz=result.items.ctype*1;
                 } else {
