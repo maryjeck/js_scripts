@@ -3,35 +3,35 @@
   "desc": "无",
   "date": "2021-08-05 20:32:08",
   "author": "https://t.me/ShaolinTemple1",
-  "resource": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_cron.json",
+  "resource": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_cron.json",
   "list": [
     {
       "name": "中青签到",
       "type": "cron",
-      "time": "15 2 * * *",
+      "time": "15 1 * * *",
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqqd.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zqqd.js"
       }
     },
     {
       "name": "中青文章",
       "type": "cron",
-      "time": "30 7,12,18 * * *",
+      "time": "30 5 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqwz.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zqwz.js"
       }
     },
     {
      "name": "中青看看赚",
       "type": "cron",
-      "time": "45 9 * * *",
+      "time": "45 2 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqkkz.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zqkkz.js"
       }
     },
     {
@@ -41,17 +41,17 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_share.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_share.js"
       }
     },
     {
       "name": "中青福利视频",
       "type": "cron",
-      "time": "20 21 * * *",
+      "time": "20 9 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_Adv_video.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_Adv_video.js"
       }
     },
     {
@@ -61,7 +61,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqbox.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zqbox.js"
       }
     },
     {
@@ -71,7 +71,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_today_score.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_today_score.js"
       }
     },
     {
@@ -81,17 +81,17 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_friendSign.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_friendSign.js"
       }
     },
     {
       "name": "中青抽奖",
       "type": "cron",
-      "time": "34 22 * * *",
+      "time": "34 17 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_Rotary.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_Rotary.js"
       }
     },
     {
@@ -101,37 +101,37 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_wakeup.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_wakeup.js"
       }
     },
     {
       "name": "中青搜索赚",
       "type": "cron",
-      "time": "35 5 * * *",
+      "time": "35 3 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqssz.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zqssz.js"
       }
     },
     {
       "name": "中青浏览赚",
       "type": "cron",
-      "time": "34 6 * * *",
+      "time": "34 4 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqllz.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zqllz.js"
       }
     },
     {
       "name": "中青阅读翻倍",
       "type": "cron",
-      "time": "34 5 * * 1",
+      "time": "34 0 * * 1",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_double.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_double.js"
       }
     },
     {
@@ -141,7 +141,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_withdraw.js"
+        "target": "https://raw.githubusercontent.com/maryjeck/js_scripts/main/zq/zq_withdraw.js"
       }
     }
 
