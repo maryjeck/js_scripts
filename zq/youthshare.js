@@ -27,6 +27,17 @@ let headers = {
     "Accept-Language": "zh-cn"
 };
 
+let min = 18000;
+let max = 45000;
+//分享次数
+let smin = 8;
+let smax = 13;
+let srand = Math.floor(Math.random() * (smax - smin + 1)) + smin;
+
+
+
+
+
 !(async() => {
     let array = articles.concat(articles1);
     for (let i = 0; i < array.length; i++) {
@@ -57,8 +68,11 @@ let headers = {
             await callback();
             await $.wait(3000);
             if(i>0){
-              
-              await $.wait(10000);
+              let rand = Math.floor(Math.random() * (max - min + 1)) + min;
+
+                //DD = 18000+Math.floor(15000 * Math.random());
+                DD = 28000 + rand;
+              await $.wait(DD);
             }
         }
     }
