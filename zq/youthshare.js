@@ -4,12 +4,18 @@ let md5 = require('md5-node');
 let nowTime;
 let wxck;
 let articles = [
-"https://focu.youth.cn/waphotzero/20211129?sid=41020258&uid=60581780&timestamp=1638165558&signature=Qg9jzmlY6xZnPq3DGO1dEJe9zUd23Bv4XrLEVMWpRd8Neb0JkA&scene_id=fire_share&share_id=60581780410202581638165617488"
+    "https://focu.youth.cn/waphotthree/20211129?sid=41019374&uid=58158143&timestamp=1638171665&signature=8W62Rvorl9xBbN3dqEax6YMq0IoLNo94pjVLXQDk0GeygYZOJ5&scene_id=fire_share&share_id=58158143410193741638171695922&time=1638171695922"
 ];
 let articles1 = [
 ];
 let encodearticles;
 
+let UserAgents=[ "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.16(0x18001031) NetType/WIFI Language/zh_CN",
+                 "Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
+                 "Mozilla/5.0 (iPhone; CPU iPhone OS 11_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
+                 "Mozilla/5.0 (Linux; Android 10; MIX 3 Build/QKQ1.190828.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/3149 MMWEBSDK/20211001 Mobile Safari/537.36 MMWEBID/830 MicroMessenger/8.0.16.2040(0x28001055) Process/toolsmp WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64",
+                 "Mozilla/5.0 (Linux; Android 9; MI 6 MIUI/V11.0.5.0.PCACNXM; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/3149 MMWEBSDK/20211001 Mobile Safari/537.36 MMWEBID/830 MicroMessenger/8.0.16.2040(0x28001055) Process/toolsmp WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64"
+];
 
 let headers = {
     "Accept-Encoding": "gzip, deflate, br",
@@ -17,30 +23,44 @@ let headers = {
     "Connection": "keep-alive",
     "Referer": "https://focus.youth.cn/",
     "Host": "script.baertt.com",
-    "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; MI 6 MIUI/V11.0.5.0.PCACNXM)",
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
     "Accept-Language": "zh-cn"
 };
 
 !(async() => {
     let array = articles.concat(articles1);
     for (let i = 0; i < array.length; i++) {
-		encodearticles = encodeURIComponent(encodeURIComponent(array[i]));
-        nowTime = new Date().getTime();
-        wxck = md5(nowTime);
-        $.log(wxck);
-		
-        await storage();
-        await $.wait(3000);
+        encodearticles = encodeURIComponent(encodeURIComponent(array[i]));
+        for(let k = 0; k<UserAgents.length ; k++)
+        {   
+            headers = {
+                "Accept-Encoding": "gzip, deflate, br",
+                "Accept": "*/*",
+                "Connection": "keep-alive",
+                "Referer": "https://focus.youth.cn/",
+                "Host": "script.baertt.com",
+                "User-Agent": `${UserAgents[k]}`,
+                "Accept-Language": "zh-cn"
+            };
+            nowTime = new Date().getTime();
+            wxck = md5(nowTime);
+            $.log(wxck);
+            await storage();
+            await $.wait(3000);
 
-        await visit();
-        await $.wait(3000);
+            await visit();
+            await $.wait(3000);
 
-        await openpage();
-        await $.wait(3000);
+            await openpage();
+            await $.wait(3000);
 
-        await callback();
-        await $.wait(3000);
-
+            await callback();
+            await $.wait(3000);
+            if(i>0){
+              
+              await $.wait(10000);
+            }
+        }
     }
 })()
 .catch((e) => $.logErr(e))
@@ -56,7 +76,7 @@ function storage() {
             headers: headers,
         };
 
-        $.get(request, function (error, response, data) {
+          $.get(request, function (error, response, data) {
             try {
                 $.log(data);
             } catch (e) {
@@ -64,6 +84,7 @@ function storage() {
             }
             resolve();
         })
+        
     })
 }
 
