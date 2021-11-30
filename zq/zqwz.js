@@ -22,14 +22,15 @@ https://kandian.wkandian.com/v5/user/stay.json 重写目标 https://raw.githubus
 
 const $ = new Env("中青看点阅读文章");
 const notify = $.isNode() ? require('./sendNotify') : '';
-message = ""
+message = "";
 
-    let zqReadedbody = $.isNode() ? (process.env.zqReadedbody ? process.env.zqReadedbody : "") : ($.getdata('zqReadedbody') ? $.getdata('zqReadedbody') : "")
-    let zqReadedbodys ="";
-    let isToday = new Date();
+let zqReadedbody = $.isNode() ? (process.env.zqReadedbody ? process.env.zqReadedbody : "") : ($.getdata('zqReadedbody') ? $.getdata('zqReadedbody') : "");
+let zqReadedbodys = "";
+let isToday = new Date();
 let zqReadedbody1 = isToday.getFullYear() + "-" + (isToday.getMonth() + 1) + "-" + isToday.getDate();
+$.log(zqReadedbody1)
 if (zqReadedbody) {
-    if (zqReadedbody.indexOf(zqReadedbody1) == -1) {
+    if (zqReadedbody.indexOf(zqReadedbody1) != 0) {
         $.setdata(zqReadedbody1, 'zqReadedbody');
         zqReadedbodys = zqReadedbody1;
     } else {
