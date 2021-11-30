@@ -134,7 +134,7 @@ Object.keys(zqwzbodys).forEach((item) => {
             zqwzbody1 = zqwzbodyArr[k];
             // console.log(`${zqwzbody1}`)
             console.log(`--------第 ${k + 1} 次阅读任务执行中--------\n`)
-            if (zqReadedbody.indexOf(zqwzbody1) > -1) {
+            if (zqReadedbodys.indexOf(zqwzbody1) > -1) {
                 console.log(`--------第 ${k + 1} 次阅读任务今日已经执行，跳过本次任务-------\n`)
             } else {
                 zqReadedbody1 = zqReadedbodys;
@@ -148,10 +148,10 @@ Object.keys(zqwzbodys).forEach((item) => {
                 await $.wait(wait_time * 1000);
                 if (is_wz == 0) {
                     timer_wz++;
-                    if (timer_wz % 3 == 0) {
+                    if (timer_wz % 3 == 0  ) {
                         for (let k = 0; k < zq_timebodyArr.length; k++) {
                             zq_timebody1 = zq_timebodyArr[k];
-                            if (zqReadedbody.indexOf(zq_timebody1) == -1) {
+                            if (zqReadedbodys.indexOf(zq_timebody1) == -1) {
                                 await timejl();
                             }
                         }
