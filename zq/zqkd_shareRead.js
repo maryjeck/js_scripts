@@ -22,8 +22,8 @@ let userCk = ''
     let readCount = 0
 
     let zqkdShareNum = ($.isNode() ? process.env.zqkdShareNum : $.getdata('zqkdShareNum')) || 0;
-let smin = 8;
-let smax = 13;
+let smin = 3;
+let smax = 8;
 if (zqkdShareNum == 0) {
     console.log("由于您没有设置分享次数，系统自动随机3~8次分享");
 }
