@@ -106,11 +106,6 @@ let newsItem = ''
 
 async function checkEnv() {
 
-    if (zqkdShareNum == 0) {
-        console.log('当前分享次数设置为0。如果需要开启分享阅读，请设置环境变量zqkdShareNum为要被阅读的次数。')
-        return false
-    }
-
     if (zqkdCookie) {
         if (zqkdCookie.indexOf('@') > -1) {
             let zqkdCookies = zqkdCookie.split('@')
