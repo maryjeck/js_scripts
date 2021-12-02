@@ -55,10 +55,12 @@ let newsItem = ''
 
                     if (newsItem) {
                         if (zqkdShareNum == 0) {
-                            zqkdShareNum = Math.floor(Math.random() * (smax - smin + 1)) + smin;
+                            zqkdShareNums = Math.floor(Math.random() * (smax - smin + 1)) + smin;
+                        }else{
+                            zqkdShareNums = zqkdShareNum
                         }
                         console.log(`开始分享阅读${zqkdShareNum}次`)
-                        for (let i = 0; i < zqkdShareNum; i++) {
+                        for (let i = 0; i < zqkdShareNums; i++) {
                             readCount++
                             let maxWaitTime = 300000
                                 let minWaitTime = 30000
@@ -80,7 +82,7 @@ let newsItem = ''
                                 await shareReadStep4()
                                 console.log(`----模拟第${readCount}次阅读完成`)
                         }
-
+                      
                     }
             }
         }
