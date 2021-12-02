@@ -17,10 +17,27 @@ const $ = new Env("中青看点看看赚");
 const notify = $.isNode() ? require('./sendNotify') : '';
 message = ""
 
-    let zqlookStartbody = $.isNode() ? (process.env.zqlookStartbody ? process.env.zqlookStartbody : "") : ($.getdata('zqlookStartbody') ? $.getdata('zqlookStartbody') : "")
+    let zqReadedbody = $.isNode() ? (process.env.zqReadedbody ? process.env.zqReadedbody : "") : ($.getdata('zqReadedbody') ? $.getdata('zqReadedbody') : "");
+let zqReadedbodys = "";
+let isToday = new Date();
+let zqReadedbody1 = isToday.getFullYear() + "-" + (isToday.getMonth() + 1) + "-" + isToday.getDate();
+$.log(zqReadedbody1)
+if (zqReadedbody) {
+    if (zqReadedbody.indexOf(zqReadedbody1) != 0) {
+        $.setdata(zqReadedbody1, 'zqReadedbody');
+        zqReadedbodys = zqReadedbody1;
+    } else {
+        zqReadedbodys = zqReadedbody;
+    }
+} else {
+    $.setdata(zqReadedbody1, 'zqReadedbody');
+    zqReadedbodys = zqReadedbody1;
+}
+
+let zqlookStartbody = $.isNode() ? (process.env.zqlookStartbody ? process.env.zqlookStartbody : "") : ($.getdata('zqlookStartbody') ? $.getdata('zqlookStartbody') : "")
     let zqlookStartbodyArr = []
     let zqlookStartbodys = ""
-   
+
     let zq_cookie = $.isNode() ? (process.env.zq_cookie ? process.env.zq_cookie : "") : ($.getdata('zq_cookie') ? $.getdata('zq_cookie') : "")
     let zq_cookieArr = []
     let zq_cookies = ""
@@ -110,9 +127,17 @@ Object.keys(zqlookStartbodys).forEach((item) => {
 
             zqlookStartbody1 = zqlookStartbodyArr[k];
             console.log(`--------第 ${k + 1} 次看看赚激活执行中--------\n`)
-            await lookStart()
-            await $.wait(1000);
-            console.log("\n\n")
+            if (zqReadedbodys.indexOf(zqlookStartbody1) > -1) {
+                console.log(`--------第 ${k + 1} 次阅读任务今日已经执行，跳过本次任务-------\n`)
+            } else {
+                zqReadedbody1 = zqReadedbodys;
+                zqReadedbodys = zqReadedbody1 + "&" + zqlookStartbody1;
+                $.setdata(zqReadedbodys, 'zqReadedbody');
+
+                await lookStart();
+                await $.wait(1000);
+                console.log("\n\n");
+            }
         }
         console.log(`共${zq_cookieArr.length}个cookie`)
         for (let k = 0; k < zq_cookieArr.length; k++) {
@@ -220,9 +245,9 @@ function lookStart(timeout = 0) {
 
                     } else {
                         console.log('\n激活看看赚任务失败')
-//                        smbody = $.getdata('zqlookStartbodyOld').replace(zqlookStartbody1 + "&", "");
-//                        $.setdata(smbody, 'zqlookStartbody');
-//                        console.log("该看看赚任务已自动删除")
+                        //                        smbody = $.getdata('zqlookStartbodyOld').replace(zqlookStartbody1 + "&", "");
+                        //                        $.setdata(smbody, 'zqlookStartbody');
+                        //                        console.log("该看看赚任务已自动删除")
                     }
             } catch (e) {}
             finally {
