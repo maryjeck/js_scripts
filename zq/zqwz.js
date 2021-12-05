@@ -125,10 +125,11 @@ Object.keys(zqwzbodys).forEach((item) => {
     } else {
 
         console.log(`共${zqwzbodyArr.length}个阅读body`)
-        index1 = indexLast * 1
-            timer_wz = 0;
+        index1 = indexLast * 1;
+        timer_wz = 0;
         timer_over = 0;
         is_wz = 0;
+        nRead_score=0;
         for (let k = index1 ? index1 : 0; k < zqwzbodyArr.length; k++) {
             // $.message = ""
             zqwzbody1 = zqwzbodyArr[k];
@@ -148,11 +149,12 @@ Object.keys(zqwzbodys).forEach((item) => {
                 await $.wait(wait_time * 1000);
                 if (is_wz == 0) {
                     timer_wz++;
-                    if (timer_wz % 3 == 0  ) {
+                    if (timer_wz % 3 == 0 && nRead_score > 0  ) {
                         for (let k = 0; k < zq_timebodyArr.length; k++) {
                             zq_timebody1 = zq_timebodyArr[k];
                             if (zqReadedbodys.indexOf(zq_timebody1) == -1) {
                                 await timejl();
+                                break;
                             }
                         }
                     }
@@ -214,6 +216,7 @@ function wzjl(timeout = 0) {
 
                 const result = JSON.parse(data)
                     if (result.items.read_score !== undefined) {
+                        nRead_score= result.items.read_score * 1 ;
                         console.log('\n浏览文章成功，获得：' + result.items.read_score + '金币')
                         is_wz = result.items.ctype * 1;
                     } else {
