@@ -130,10 +130,6 @@ Object.keys(zqlookStartbodys).forEach((item) => {
             if (zqReadedbodys.indexOf(zqlookStartbody1) > -1) {
                 console.log(`--------第 ${k + 1} 次阅读任务今日已经执行，跳过本次任务-------\n`)
             } else {
-                zqReadedbody1 = zqReadedbodys;
-                zqReadedbodys = zqReadedbody1 + "&" + zqlookStartbody1;
-                $.setdata(zqReadedbodys, 'zqReadedbody');
-
                 await lookStart();
                 await $.wait(1000);
                 console.log("\n\n");
@@ -295,6 +291,9 @@ function reward(timeout = 0) {
                 const result = JSON.parse(data)
                     if (result.items.score !== "undefined") {
                         console.log('\n看看赚获得：' + result.items.score + '金币')
+                        zqReadedbody1 = zqReadedbodys;
+                        zqReadedbodys = zqReadedbody1 + "&" + zqlookStartbody1;
+                        $.setdata(zqReadedbodys, 'zqReadedbody');
                     } else {
                         console.log('\n领取奖励失败')
                     }
