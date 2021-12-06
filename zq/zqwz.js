@@ -150,7 +150,7 @@ Object.keys(zqwzbodys).forEach((item) => {
                 await $.wait(wait_time * 1000);
                 if (is_wz == 0) {
                     timer_wz++;
-                    if (timer_wz % 3 == 0 && nRead_score > 0  ) {
+                    if (timer_wz % 2 == 0 && nRead_score > 0  ) {
                         for (let k = 0; k < zq_timebodyArr.length; k++) {
                             zq_timebody1 = zq_timebodyArr[k];
                             if (zqReadedbodys.indexOf(zq_timebody1) == -1) {
