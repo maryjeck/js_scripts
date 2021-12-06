@@ -32,6 +32,7 @@ $.log(zqReadedbody1)
 if (zqReadedbody) {
     if (zqReadedbody.indexOf(zqReadedbody1) != 0) {
         $.setdata(zqReadedbody1, 'zqReadedbody');
+        $.setdata(0, 'zqbody_index');
         zqReadedbodys = zqReadedbody1;
     } else {
         zqReadedbodys = zqReadedbody;
@@ -216,7 +217,7 @@ function wzjl(timeout = 0) {
 
                 const result = JSON.parse(data)
                     if (result.items.read_score !== undefined) {
-                        nRead_score= result.items.read_score * 1 ;
+                        nRead_score = result.items.read_score * 1 ;
                         console.log('\n浏览文章成功，获得：' + result.items.read_score + '金币')
                         is_wz = result.items.ctype * 1;
                     } else {
