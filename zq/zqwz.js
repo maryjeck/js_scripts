@@ -268,7 +268,7 @@ function timejl(timeout = 0) {
                     if (result.success === true) {
                         console.log('\n阅读时长：' + result.time + '秒')
                         timer_over = result.time * 1;
-                        if (timer_over > 7200) {
+                        if (timer_over > 5900) {
                             zqReadedbody1 = zqReadedbodys;
                             zqReadedbodys = zqReadedbody1 + "&" + zq_timebody1;
                             $.setdata(zqReadedbodys, 'zqReadedbody');
