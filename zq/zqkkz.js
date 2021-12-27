@@ -25,6 +25,7 @@ $.log(zqReadedbody1)
 if (zqReadedbody) {
     if (zqReadedbody.indexOf(zqReadedbody1) != 0) {
         $.setdata(zqReadedbody1, 'zqReadedbody');
+        $.setdata(0, 'zqbody_index');
         zqReadedbodys = zqReadedbody1;
     } else {
         zqReadedbodys = zqReadedbody;
